@@ -22,10 +22,19 @@ public class Finesta extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 //        misure Frame
         setPreferredSize(new Dimension(SIZE_FRAME_X, SIZE_FRAME_Y));
-//        creo cerchio
-        Cerchio c = new Cerchio();
-//        aggiungi il cerchio al Frame
-        add(c);
+//        setto il layout della fiestra
+        setLayout(new FlowLayout());
+//        creo cerchi
+        Cerchio c1 = new Cerchio();
+        Cerchio c2 = new Cerchio();
+        Cerchio c3 = new Cerchio();
+
+//        aggiungi i cerchi al Frame
+//        e decidiamo disposizione nella finestra
+        add(c1);//, BorderLayout.CENTER);
+        add(c2);//, BorderLayout.SOUTH);
+        add(c3);//, BorderLayout.WEST);
+
 //        aggiungiamo le componenti grafiche
         pack();
 //        setta visibilità a true

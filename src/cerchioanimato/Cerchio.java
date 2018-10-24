@@ -14,8 +14,8 @@ public class Cerchio extends JPanel implements ActionListener {
 //    variabili e costanti globali
 
 //    creo il timer
-//    vuole un ascoltatore implementato sa ActionListener
-//    tra parentesi quanti millisecondi
+//    vuole un ascoltatore implementato da ActionListener
+//    tra parentesi quanti millisecondi e la classe ascoltatore
     Timer timer = new Timer(20, this);
 //    misura del pannello
     final int SIZE_PANEL = 50;
@@ -23,7 +23,7 @@ public class Cerchio extends JPanel implements ActionListener {
 //    coordinate posizione: x, y
 //    coordinate spostamento: dx, dy
 //    maggiori sono dx e dy più velocemente si sposta
-    int x = 2, y = 2, dx = 2, dy = 2;
+    int x = 2, y = 2, dx = 3, dy = 3;
 
 //    Costruttore
     public Cerchio() {
@@ -32,6 +32,7 @@ public class Cerchio extends JPanel implements ActionListener {
 //        setta dimensioni Panel
 //        se non c'è altro nella finestra prende le stesse misure
         setPreferredSize(new Dimension(SIZE_PANEL, SIZE_PANEL));
+
 //        avviamo il timer
         timer.start();
 
@@ -39,21 +40,25 @@ public class Cerchio extends JPanel implements ActionListener {
 
 //    metodo che sovrascrive paintComonent
 //    parametri: componente grafica
+    @Override
     public void paintComponent(Graphics g) {
 //        chiamo paintComponent già esistente
         super.paintComponent(g);
+//        setto colore pallina
+        g.setColor(Color.BLACK);
 //        disegno ovale
 //        posizione x e y
 //        misure = a pannello
-        g.drawOval(x, y, SIZE_PANEL, SIZE_PANEL);
+        g.fillOval(x, y, SIZE_PANEL, SIZE_PANEL);
     }
 
 //    metodo sposta
     public void sposta() {
-
+//        faccio rimbalzare la pallina
         if (y + dy + SIZE_PANEL + 42 > Finesta.SIZE_FRAME_Y) {
             dy = -dy;
         }
+
         if (y + dy < 0) {
             dy = -dy;
         }
@@ -61,7 +66,7 @@ public class Cerchio extends JPanel implements ActionListener {
         if (x + dx + SIZE_PANEL + 13 > Finesta.SIZE_FRAME_X) {
             dx = -dx;
         }
-        
+
         if (x + dx < 0) {
             dx = -dx;
         }
